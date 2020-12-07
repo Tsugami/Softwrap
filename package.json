@@ -6,7 +6,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "linter": "yarn workspace @softwrap/linter"
+    "linter": "yarn workspace @softwrap/linter",
+    "server": "yarn workspace @softwrap/server"
   },
   "workspaces": {
     "packages": [
@@ -14,6 +15,7 @@
     ]
   },
   "devDependencies": {
-    "@softwrap/linter": "."
+    "@softwrap/linter": ".",
+    "jest": "^26.6.3"
   }
 }
