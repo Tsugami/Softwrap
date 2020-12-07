@@ -5,9 +5,15 @@
   "author": "Yslan Ramos <yslan3000@gmail.com>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "linter": "yarn workspace @softwrap/linter"
+  },
   "workspaces": {
     "packages": [
       "packages/*"
     ]
+  },
+  "devDependencies": {
+    "@softwrap/linter": "."
   }
 }
