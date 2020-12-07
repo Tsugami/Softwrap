@@ -1,0 +1,13 @@
+{
+  "name": "softwrap",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Yslan Ramos <yslan3000@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  }
+}
