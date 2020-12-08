@@ -32,14 +32,10 @@ class UserRepo {
     return newUserRef.key
   }
 
-  static async findOne (username) {
-    return UserRepo.ref().child(username)
+  static async findOne (userId) {
+    return UserRepo.ref().child(userId)
       .once('value')
       .then(snapshot => snapshot.val())
-  }
-
-  static exists (userId) {
-    return UserRepo.ref(userId).child().exists()
   }
 
   static async update (userId, entity) {

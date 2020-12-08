@@ -46,6 +46,11 @@ describe('User Repository Tests', () => {
       await Promise.all(queries)
     })
 
+    it('should return all users registered', async () => {
+      const users = await UserRepo.find()
+      expect(users.length).toBe(testsUsers.length)
+    })
+
     it('should return only users of Manaus city', async () => {
       const users = await UserRepo.find({ city: 'Manaus' })
       const expected = users.every(user => user.city === 'Manaus')

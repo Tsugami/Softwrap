@@ -3,7 +3,9 @@ const UserRepo = require('../database/repositories/UserRepo')
 module.exports = async (req, res, next) => {
   const { userId } = req.params
 
-  if (!(await UserRepo.exists(userId))) {
+  req.user = userId && await UserRepo.findOne(userId)
+
+  if (!req.user) {
     return res.status(404).json({ message: 'USER ID NOT EXISTS.' })
   }
 

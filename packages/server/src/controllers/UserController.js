@@ -28,6 +28,10 @@ class UserController {
     return res.status(200).json({ deleted: true })
   }
 
+  static async findById ({ user }, res) {
+    return res.status(200).json(user)
+  }
+
   static async find (req, res) {
     const {
       minAge,
@@ -42,7 +46,7 @@ class UserController {
 
     const LIMIT_MAX = 100
 
-    const limitParsed = Number(limit) > LIMIT_MAX ? LIMIT_MAX : Number(limit)
+    const limitParsed = !limit || Number(limit) > LIMIT_MAX ? LIMIT_MAX : Number(limit)
 
     const users = await UserRepo.find({
       minAge: Number(minAge),

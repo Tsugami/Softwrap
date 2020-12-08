@@ -19,22 +19,22 @@ const UserBodymiddleware = RequiredBodyField({
 
 router.post('/users',
   UserBodymiddleware,
-  validateCpf,
-  validateCivilState,
-  validateCity,
+  validateCpf(false),
+  validateCivilState(false),
+  validateCity(false),
   UserController.create
 )
 
 router.put('/users/:userId',
   checkUserExists,
-  UserBodymiddleware,
-  validateCpf,
-  validateCivilState,
-  validateCity,
+  validateCpf(true),
+  validateCivilState(true),
+  validateCity(true),
   UserController.update
 )
 
 router.get('/users', UserController.find)
+router.get('/users/:userId', checkUserExists, UserController.findById)
 router.delete('/users/:userId', checkUserExists, UserController.delete)
 
 module.exports = router

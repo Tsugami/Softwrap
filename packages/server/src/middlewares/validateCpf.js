@@ -1,7 +1,8 @@
 const Util = require('../util/Util')
 
-const validateCPF = (req, res, next) => {
-  if (!(req.body?.cpf && Util.validateCPF(req.body?.cpf))) {
+const validateCPF = optional => (req, res, next) => {
+  const { cpf } = req.body
+  if ((!cpf && !optional) || (cpf && !Util.validateCPF(cpf))) {
     return res.status(400).json({
       message: 'CPF INVALID.'
     })
