@@ -8,11 +8,6 @@ class Util {
     return newObj
   }
 
-  static validateCPF (cpf) {
-    const CPF_REGEX = /[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}-?[0-9]{2}/
-    return CPF_REGEX.test(cpf)
-  }
-
   /**
    *  Check that the body has all approved fields
    * @details types cannot to be object or array

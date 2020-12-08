@@ -6,14 +6,6 @@ it('should return an obj without null fields', () => {
   expect(expected).toEqual({ a: 1, b: 2 })
 })
 
-it('should return true if o cpf is valid', () => {
-  expect(Util.validateCPF('61268089087')).toBe(true)
-  expect(Util.validateCPF('832.922.170-91')).toBe(true)
-  expect(Util.validateCPF('510.83993089')).toBe(true)
-  expect(Util.validateCPF('awhdwodhd')).toBe(false)
-  expect(Util.validateCPF('4951')).toBe(false)
-})
-
 describe('checkFields Function tests', () => {
   it('should return void if have the required fields', () => {
     const obj = { a: 1, b: 'aa' }
