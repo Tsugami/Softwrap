@@ -1,13 +1,13 @@
 {
   "name": "softwrap",
   "version": "1.0.0",
-  "main": "index.js",
   "author": "Yslan Ramos <yslan3000@gmail.com>",
   "license": "MIT",
   "private": true,
   "scripts": {
     "linter": "yarn workspace @softwrap/linter",
-    "server": "yarn workspace @softwrap/server"
+    "server": "yarn workspace @softwrap/server",
+    "run-linter": "eslint --fix ."
   },
   "workspaces": {
     "packages": [
@@ -15,7 +15,7 @@
     ]
   },
   "devDependencies": {
-    "@softwrap/linter": ".",
+    "@softwrap/linter": "*",
     "jest": "^26.6.3"
   }
 }

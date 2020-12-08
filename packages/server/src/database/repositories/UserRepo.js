@@ -1,5 +1,5 @@
 const firebase = require('firebase-admin')
-const { removeNullValue } = require('../../util/Util')
+const { removeNullFields } = require('../../util/Util')
 
 class UserRepo {
   static ref () {
@@ -44,14 +44,14 @@ class UserRepo {
 
   static async update (userId, entity) {
     return UserRepo.ref().child(userId)
-      .update(removeNullValue(UserRepo.parseEntity(entity)))
+      .update(removeNullFields(UserRepo.parseEntity(entity)))
   }
 
   static remove (userId) {
     return UserRepo.ref().child(userId).remove()
   }
 
-  static async find (filter = {}, limit = 10) {
+  static async find (filter = {}, limit = 10, skip = 1) {
     const {
       minAge,
       maxAge,
@@ -61,31 +61,67 @@ class UserRepo {
       stateUf
     } = filter
 
-    let query = UserRepo.ref()
+    const query = UserRepo.ref()
 
-    if (minAge && maxAge) {
-      query = query.orderByChild('age').startAt(minAge).endAt(maxAge)
-    } else if (minAge) {
-      query = query.orderByChild('age').startAt(minAge)
-    } else if (maxAge) {
-      query = query.orderByChild('age').endAt(maxAge)
-    }
+    /**
+     * FIREBASE NÃO ACEITA MUILTIPLAS QUERIES
+     * https://firebase.google.com/docs/database/web/lists-of-data#sort_data
+     */
 
-    if (city) query = query.orderByChild('city').equalTo(city)
-    if (civilState) query = query.orderByChild('civil_state').equalTo(civilState)
-    if (stateUf) query = query.orderByChild('state_uf').equalTo(stateUf)
-    if (name) query = query.orderByChild('name').startAt(name).endAt(name + '\uf8ff')
+    // if (minAge && maxAge) {
+    //   query = query.orderByChild('age').startAt(minAge).endAt(maxAge)
+    // }
+    // if (minAge) {
+    //   query = query.orderByChild('age').startAt(minAge)
+    // } else if (maxAge) {
+    //   query = query.orderByChild('age').endAt(maxAge)
+    // } else if (city) {
+    //   query = query.orderByChild('city').equalTo(city)
+    // }
+    // if (civilState) {
+    //   query = query.orderByChild('civil_state').equalTo(civilState)
+    // }
+    // if (stateUf) {
+    //   query = query.orderByChild('state_uf').equalTo(stateUf)
+    // }
+    // if (name) {
+    //   query = query.orderByChild('name').startAt(name).endAt(name + '\uf8ff')
+    // }
 
-
-    const result = await query
-      .limitToFirst(limit)
+    const users = await query
+      // .limitToFirst(limit)
       .once('value')
       .then(snapshot => snapshot.val())
 
-    if (!result) return []
+    if (!users) return []
 
-    return Object.entries(result)
+    const usersParsed = Object.entries(users)
       .reduce((r, [userId, data]) => [...r, { ...data, userId }], [])
+
+    const filteredUsers = usersParsed
+      .filter(user => {
+        if (minAge && user.age < minAge) {
+          return false
+        }
+        if (maxAge && user.age > maxAge) {
+          return false
+        }
+        if (city && user.city !== city) {
+          return false
+        }
+        if (stateUf && user.state_uf !== stateUf) {
+          return false
+        }
+        if (civilState && user.civil_state !== civilState) {
+          return false
+        }
+        if (name && !user.name.toUpperCase().includes(name.toUpperCase())) {
+          return false
+        }
+        return true
+      })
+
+    return filteredUsers.slice((skip - 1) * limit, skip * limit)
   }
 
   /**
