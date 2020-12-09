@@ -10,10 +10,6 @@
     "client": "yarn workspace @softwrap/client",
     "run-linter": "eslint --fix ."
   },
-  "engines": {
-    "node": "12.x",
-    "yarn": "1.22.4"
-  },
   "workspaces": {
     "packages": [
       "packages/*"
