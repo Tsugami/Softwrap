@@ -11,6 +11,12 @@ module.exports = {
     'prettier/standard',
     'prettier/react'
   ],
+  settings: {
+    react: {
+      version: 'detect'
+    }
+  },
+
   parserOptions: {
     ecmaFeatures: {
       jsx: true
