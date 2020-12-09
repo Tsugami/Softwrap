@@ -51,7 +51,7 @@ $ yarn server start
 $ yarn client start
 ````
 
-### Decições, Problemas e Dificuldades
+### Desições e Problemas
 #### Limitações da Firebase Realtime Database
 Fiz todos filtros e paginações com TDD, antes mesmo de criar as rotas, todos eles testava os filtros individualmente, nenhum testava 2 filtros ao mesmo tempo, quando fui testar as rotas pelo Insomia, recebi um erro da firebase, falando que não podia fazer duas filtros ao mesmo tempo. compreensivel já que o realtime é `key & value`. Resolvi buscando todos os usuários e fazendo o filtro manualmente. não concordo em buscar todos os usuários, se a demanda fosse grande, usaria bastante da maquina e poderia retornar usuários desatualizados. Dependendo migrar para `Cloud Firestore`, vi que ele tem queries mais ideias para filtros.
 #### Validações
