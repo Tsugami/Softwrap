@@ -1,5 +1,5 @@
 {
-  "rulesFile": "packeges/server/serviceAccountKey.json",
+  "rulesFile": "serviceAccountKey.json",
   "hosting": {
     "public": "packages/client/build",
     "ignore": [

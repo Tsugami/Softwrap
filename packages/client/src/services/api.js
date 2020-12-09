@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: process.env.API_URL || `http://localhost:3333`,
+  baseURL: process.env.API_URL || `https://software-teste.herokuapp.com/`,
 });
 
 export function getUsers(data = {}) {
