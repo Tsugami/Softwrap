@@ -93,11 +93,14 @@ function App() {
           <Form
             data={updateUserId ? users.find(user => user.userId === updateUserId) : null}
             handler={updateUserId ? updateUserHandler : createUserHandler}
+            cancelHandler={() => setShowForm(false) && setUpdateUserId(null)}
             buttonContent={updateUserId ? 'Atualizar' : 'Registrar'}
           ></Form> : null}
       <AppContainer>
         <div>
-          <SearchBar onClickHandler={getUsersHandler}></SearchBar>
+          <SearchBar
+            newRegister={() => setShowForm(true) && setUpdateUserId(null)}
+            onClickHandler={getUsersHandler}></SearchBar>
           {/* <SearchFilter></SearchFilter> */}
         </div>
         <AppContent>

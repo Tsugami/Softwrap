@@ -7,11 +7,18 @@ const Container = styled.div`
   margin: 15px;
   display: flex;
   flex-direction: row;
+  height: 65px;
+`
+
+const CreateButton = styled.button`
+  margin-left: 5px;
+  border-radius: 4px;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+  cursor: pointer;
 `
 
 const Button = styled.button`
   width: 57px;
-  height: 59px;
   background-color: ${barColor};
   cursor: pointer;
   border-radius: 0 15px 15px 0;
@@ -37,13 +44,14 @@ const ButtonIcon = styled(BiSearchAlt)`
   }
 `
 
-const SearchBarComponent = ({ onClickHandler }) => {
+const SearchBarComponent = ({ newRegister, onClickHandler }) => {
   const [input, setInput] = useState('')
 
   return (
   <Container>
     <Input onChange={e => setInput(e.target.value)} placeholder="Pesquise pelo nome ou CPF"></Input>
     <Button onClick={() => onClickHandler(input)} type='button'><ButtonIcon/></Button>
+    <CreateButton onClick={newRegister}>Novo Registro</CreateButton>
   </Container>
 )
 }

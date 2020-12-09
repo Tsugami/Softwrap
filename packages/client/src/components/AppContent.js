@@ -10,7 +10,7 @@ export default styled.div`
     grid-template-columns: repeat(3, 1fr);
   }
 
-  @media (max-width: 360) {
+  @media (max-width: 520px) {
     grid-template-columns: 1fr;
   }
 `

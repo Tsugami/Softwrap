@@ -77,12 +77,21 @@ const LocationBox = styled.div`
 
 const Button = styled.button`
   cursor: pointer;
-  &:hover {
+`
 
+const CancelContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+  margin: 3px;
+  cursor: pointer;
+  color: #ff4040;
+  &:hover {
+    color: #BD3C3C
   }
 `
 
-const FormComponent = ({ data = {}, handler, buttonContent = 'Registrar' }) => {
+const FormComponent = ({ data = {}, cancelHandler, handler, buttonContent = 'Registrar' }) => {
   const [name, setName] = useState(data?.name ?? '')
   const [age, setAge] = useState(data?.age ?? '')
   const [civilState, setCivilState] = useState(data?.civil_state?.toLowerCase() ?? 'single')
@@ -188,6 +197,9 @@ const FormComponent = ({ data = {}, handler, buttonContent = 'Registrar' }) => {
         </Box>
       </LocationBox>
     <Button onClick={onButtonClick}>{buttonContent}</Button>
+    <CancelContainer>
+      <h4 onClick={() => cancelHandler()}>Cancelar</h4>
+    </CancelContainer>
   </Form>
   </Container>
 }
