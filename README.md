@@ -1,14 +1,18 @@
 <h1 align="center">Softwrap</h1>
 <p align="center">Simples App para cadastrar e buscar usuários</p>
 
-![Pagina Principal](.github/screenshots/cards.png)
-<img
-  alt="Formulário de Cadastrar e Atualizar usuário"
-  src=".github/screenshots/form.png"
-  height=400
-  width=400
-/>
-<!-- ![Formulário de Cadastrar e Atualizar usuário](.github/screenshots/form.png) -->
+<h1 align="center">
+  <img
+    alt="Pagina Principal"
+    src=".github/screenshots/cards.png"
+  />
+  <img
+    alt="Formulário de Cadastrar e Atualizar usuário"
+    src=".github/screenshots/form.png"
+    height=400
+    width=400
+  />
+</h1>
 
 Tabela de conteúdos
 =================
