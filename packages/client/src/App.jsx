@@ -14,24 +14,25 @@ function App() {
 
   useEffect(() => getUsers().then(users => setUsers(users ?? [])), []);
 
+  async function errorHandler(error, message) {
+    console.error(error?.response?.data ?? error)
+    alert(message)
+  }
+
   async function getUsersHandler (input) {
     try {
       const newUsers = await getUsers({ name: input })
       setUsers(newUsers)
     } catch (error) {
-      console.error(error)
+      errorHandler(error, 'Não foi possivel buscar os usuário.')
     }
   }
 
   async function createUserHandler (data) {
     try {
       await createUser(data)
-      setShowForm(false)
     } catch (error) {
-      console.error('alo', error)
-      console.log(error?.response.data);
-        console.log(error?.response.status);
-        console.log(error?.response.headers);
+      errorHandler(error, 'Não foi possivel registrar um novo usuário.')
     }
   }
 
@@ -64,10 +65,7 @@ function App() {
       setShowForm(false)
     }
     } catch (error) {
-      console.error('alo', error)
-      console.log(error?.response.data);
-      console.log(error?.response.status);
-      console.log(error?.response.headers);
+      errorHandler(error, 'Não foi possivel atualizar o usuário.')
     }
   }
 
@@ -77,7 +75,7 @@ function App() {
       const newUsers = users.filter(u => u.userId !== userId)
       setUsers(newUsers)
     } catch (error) {
-      console.error(error?.message ?? error)
+      errorHandler(error, 'Não foi possivel deletar o usuário.')
     }
   }
 
