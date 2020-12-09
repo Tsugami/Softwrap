@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import cpfUtil from '@softwrap/cpf-utils'
+import {normalizeCpf} from '../utils/Util'
 import {AiFillDelete} from 'react-icons/ai'
 import {GoPencil} from 'react-icons/go'
 import { ItemColor as cardBackgroundColor } from '../styles/Constants'
@@ -100,7 +100,7 @@ const CardComponent = ({ user, deleteButtomHandler, updateButtonHandler }) => {
             <BoxInfo>{age} anos</BoxInfo>
             <BoxInfo>{civilStates[civil_state.toLowerCase()]}</BoxInfo>
           </BasicInfoBox>
-          <span>CPF: {cpfUtil.parse(cpf)}</span>
+          <span>CPF: {normalizeCpf(cpf)}</span>
         </Box>
     </Content>
     <Buttons>

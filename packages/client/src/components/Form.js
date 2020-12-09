@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react'
 import styled, { keyframes } from 'styled-components'
-import CpfUtil from '@softwrap/cpf-utils'
+import {normalizeCpf} from '../utils/Util'
 import axios from 'axios'
 
 const FormAnimation = keyframes`
@@ -116,7 +116,7 @@ const FormComponent = ({ data = {}, cancelHandler, handler, buttonContent = 'Reg
   }, [stateUf]);
 
 
-  useEffect(() => setCpf(CpfUtil.parse(cpf.slice(0, 14))), [cpf])
+  useEffect(() => setCpf(normalizeCpf(cpf.slice(0, 14))), [cpf])
 
   async function onButtonClick(event) {
     event.preventDefault()
