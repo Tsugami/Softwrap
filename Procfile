@@ -1,1 +1,2 @@
-web: yarn server start
+web: yarn client eject
+server: yarn server start
