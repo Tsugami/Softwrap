@@ -1,0 +1,17 @@
+{
+  "rulesFile": "packeges/server/serviceAccountKey.json",
+  "hosting": {
+    "public": "packages/client/build",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
