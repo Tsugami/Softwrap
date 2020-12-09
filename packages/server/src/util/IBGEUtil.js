@@ -7,7 +7,7 @@ class IBGEUtil {
 
     if (!cities) return
 
-    return cities.data.some(c => c.nome?.toLowerCase() === city.toLowerCase())
+    return cities.data.some(c => c.nome && c.nome.toLowerCase() === city.toLowerCase())
   }
 }
 

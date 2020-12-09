@@ -19,9 +19,9 @@ class UserRepo {
     return {
       name,
       age,
-      civil_state: civilState?.toUpperCase(),
+      civil_state: civilState ? civilState.toUpperCase() : civilState,
       cpf,
-      state_uf: stateUf?.toUpperCase(),
+      state_uf: stateUf ? stateUf.toUpperCase() : stateUf,
       city
     }
   }
