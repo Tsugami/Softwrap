@@ -13,6 +13,7 @@ Tabela de conteúdos
    * [Como usar](#como-usar)
    * [Tecnologias](#Tecnologias)
    * [Funcionalidades](#Funcionalidades)
+   * [Decisões e Problemas](https://github.com/Tsugami/Softwrap/issues/1)
 <!--te-->
 
 ### Funcionalidades
@@ -50,13 +51,3 @@ $ yarn server start
 # Inicie o site
 $ yarn client start
 ````
-
-### Desições e Problemas
-#### Limitações da Firebase Realtime Database
-Fiz todos filtros e paginações com TDD, antes mesmo de criar as rotas, todos eles testava os filtros individualmente, nenhum testava 2 filtros ao mesmo tempo, quando fui testar as rotas pelo Insomia, recebi um erro da firebase, falando que não podia fazer duas filtros ao mesmo tempo. compreensivel já que o realtime é `key & value`. Resolvi buscando todos os usuários e fazendo o filtro manualmente, não concordo em buscar todos os usuários, se a demanda fosse grande usaria bastante da maquina e poderia retornar usuários desatualizados. Dependendo migrar para `Cloud Firestore`, vi que ele tem queries mais ideias para filtros.
-#### Validações
-As validações foram separadas em middlewares, para serem reutilizadas no `create` e `update`.
-
-#### Repository Pattern
-Sempre uso `Repository Pattern` em meus projetos, mas foi a primeira vez que eu senti o real sabor de usa-lo, quando fui refazer os filtros de busca, só alterei o `UserRepo` e os controllers e tests rodaram perfeitamente, sem quaisquis alterações.
-
