@@ -5,7 +5,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "client build",
+    "build": "yarn client build",
     "linter": "yarn workspace @softwrap/linter",
     "server": "yarn workspace @softwrap/server",
     "client": "yarn workspace @softwrap/client",
