@@ -4,6 +4,7 @@
   "main": "src/index.js",
   "license": "MIT",
   "scripts": {
+    "start": "node .",
     "dev": "nodemon -r dotenv/config .",
     "test": "jest --setupFiles dotenv/config"
   },
