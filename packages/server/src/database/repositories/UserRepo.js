@@ -111,7 +111,10 @@ class UserRepo {
         if (civilState && user.civil_state !== civilState) {
           return false
         }
-        if (name && !user.name.toUpperCase().includes(name.toUpperCase())) {
+        if (name && (
+          !user.name.toUpperCase().includes(name.toUpperCase()) ||
+          user.cpf !== name
+        )) {
           return false
         }
         return true
