@@ -1,4 +1,4 @@
-const firebase = require('firebase-admin')
+const firebase = require('firebase')
 const { removeNullFields } = require('../../util/Util')
 
 class UserRepo {
