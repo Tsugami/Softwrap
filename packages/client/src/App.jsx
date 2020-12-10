@@ -8,7 +8,6 @@ import Form from './components/Form'
 
 function App() {
   const [users, setUsers] = useState([])
-  // const [errorMessage, setErrorMessage] = useState(null)
   const [showForm, setShowForm] = useState(false)
   const [updateUserId, setUpdateUserId] = useState(null)
 
@@ -99,7 +98,6 @@ function App() {
           <SearchBar
             newRegister={() => setShowForm(true) && setUpdateUserId(null)}
             onClickHandler={getUsersHandler}></SearchBar>
-          {/* <SearchFilter></SearchFilter> */}
         </div>
         <AppContent>
           {users.map((user) => <Card
