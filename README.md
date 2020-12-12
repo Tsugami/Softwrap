@@ -40,7 +40,7 @@ Tabela de conteúdos
 - [Express](https://expressjs.com/)
 - [Firebase Realtime Database](https://firebase.google.com/docs/database?hl=pt-br)
 - [Eslint](https://eslint.org/), [Prettier](https://prettier.io/) and [EditorConfig](https://editorconfig.org/)
-
+- [Jest](https://jestjs.io/)
 
 ### Como usar
 ````bash
